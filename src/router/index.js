@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
+import Register from '../components/Register.vue'
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: '/login' },
-  { path: '/login', component: Login }
+  { path: '/login', component: Login },
+  { path: '/register', component: Register }
 ]
 const router = new VueRouter({
   routes
@@ -23,4 +25,9 @@ router.beforeEach((to, from, next) => {
   if (!tokenStr) return next('/login')
   next()
 })
+// const originalPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function push (location, onResolve, onReject) {
+//   if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+//   return originalPush.call(this, location).catch(err => err)
+// }
 export default router

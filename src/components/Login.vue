@@ -71,7 +71,7 @@ export default {
       })
     },
     RegisterRoute () {
-      this.$router.push('/Register')
+      this.$router.push('/register').catch(() => {})
     }
   }
 }
